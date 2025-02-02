@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking & Ticket Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 80%;
+            max-width: 600px;
+        }
+        h2 {
+            color: #333;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background: #00c6ff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0072ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Booking & Ticket Management</h2>
+        <form id="bookingForm">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <select id="ticketType">
+                <option value="one-way">One-Way Ticket</option>
+                <option value="round-trip">Round Trip Ticket</option>
+            </select>
+            <input type="date" id="travelDate" required>
+            <button type="submit" onclick="window.location.href='9.admin_dashboard.html.html'">Book Ticket</button>
+        </form>
+        <p id="responseMessage"></p>
+    </div>
+    <script>
+        document.getElementById('bookingForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const ticketType = document.getElementById('ticketType').value;
+            const travelDate = document.getElementById('travelDate').value;
+            
+            if (!name || !email || !travelDate) {
+                document.getElementById('responseMessage').innerText = 'Please fill in all fields.';
+                return;
+            }
+            
+            document.getElementById('responseMessage').innerText = `Ticket booked successfully for ${travelDate}!`; 
+        });
+    </script>
+</body>
+</html>

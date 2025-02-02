@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Travel Updates</title>
+    <link rel="stylesheet" href="index.html">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 80%;
+            max-width: 600px;
+        }
+        h2 {
+            color: #333;
+        }
+        .updates {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e3f2fd;
+            border-radius: 5px;
+            height: 200px;
+            overflow-y: auto;
+        }
+        .update-item {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        button {
+            background: #4facfe;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #00f2fe;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Real-Time Travel Updates</h2>
+        <div class="updates" id="updatesContainer">
+            <p>Loading updates...</p>
+        </div>
+        <button onclick="fetchUpdates()" type="submit">Refresh Updates</button>
+        <button onclick="window.location.href='3.inquiry.html'">Submit</button>
+    </div>
+    <script>
+        function fetchUpdates() {
+            const updatesContainer = document.getElementById('updatesContainer');
+            updatesContainer.innerHTML = '<p>Fetching latest updates...</p>';
+            
+            setTimeout(() => {
+                const updates = [
+                    "Train A delayed by 10 minutes.",
+                    "Bus 32 rerouted due to roadwork.",
+                    "Weather warning: Heavy rain expected.",
+                    "Flight XYZ on time, gate 12."
+                ];
+                updatesContainer.innerHTML = updates.map(update => `<div class='update-item'>${update}</div>`).join('');
+            }, 2000);
+        }
+
+        window.onload = fetchUpdates;
+    </script>
+</body>
+</html>

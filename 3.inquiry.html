@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inquiry Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 80%;
+            max-width: 600px;
+        }
+        h2 {
+            color: #333;
+        }
+        input, textarea, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background: #ff758c;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #ff7eb3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Inquiry Management System</h2>
+        <form id="inquiryForm">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <select id="inquiryType">
+                <option value="schedule">Travel Schedule</option>
+                <option value="ticketing">Ticketing Issue</option>
+                <option value="general">General Inquiry</option>
+            </select>
+            <textarea id="message" placeholder="Your Inquiry" rows="4" required></textarea>
+            <button type="submit" onclick="window.location.href='4.complaint.html'">Submit Inquiry</button>
+        </form>
+        <p id="responseMessage"></p>
+    </div>
+    <script>
+        document.getElementById('inquiryForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const inquiryType = document.getElementById('inquiryType').value;
+            const message = document.getElementById('message').value;
+            
+            if (!name || !email || !message) {
+                document.getElementById('responseMessage').innerText = 'Please fill in all fields.';
+                return;
+            }
+            
+            document.getElementById('responseMessage').innerText = `Inquiry submitted successfully!`; 
+        });
+    </script>
+</body>
+</html>

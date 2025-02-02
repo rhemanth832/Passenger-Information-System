@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint Resolution System</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ff9966, #ff5e62);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 80%;
+            max-width: 600px;
+        }
+        h2 {
+            color: #333;
+        }
+        input, textarea, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background: #ff5e62;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #ff9966;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Complaint Resolution System</h2>
+        <form id="complaintForm">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <select id="complaintType">
+                <option value="service">Service Issue</option>
+                <option value="staff">Staff Behavior</option>
+                <option value="other">Other</option>
+            </select>
+            <textarea id="complaint" placeholder="Your Complaint" rows="4" required></textarea>
+            <button type="submit" onclick="window.location.href='5.lostfound.html'">Submit Complaint</button>
+        </form>
+        <p id="responseMessage"></p>
+    </div>
+    <script>
+        document.getElementById('complaintForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const complaintType = document.getElementById('complaintType').value;
+            const complaint = document.getElementById('complaint').value;
+            
+            if (!name || !email || !complaint) {
+                document.getElementById('responseMessage').innerText = 'Please fill in all fields.';
+                return;
+            }
+            
+            document.getElementById('responseMessage').innerText = `Complaint submitted successfully!`; 
+        });
+    </script>
+</body>
+</html>

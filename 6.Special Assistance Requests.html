@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Assistance Requests</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 80%;
+            max-width: 600px;
+        }
+        h2 {
+            color: #333;
+        }
+        input, textarea, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background: #ff9a9e;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #fad0c4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Special Assistance Requests</h2>
+        <form id="assistanceForm">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <select id="assistanceType">
+                <option value="wheelchair">Wheelchair Assistance</option>
+                <option value="language">Language Support</option>
+                <option value="medical">Medical Assistance</option>
+                <option value="other">Other</option>
+            </select>
+            <textarea id="description" placeholder="Describe your request" rows="4" required></textarea>
+            <button type="submit" onclick="window.location.href='7.incidentmanagement.html'">Submit Request</button>
+        </form>
+        <p id="responseMessage"></p>
+    </div>
+    <script>
+        document.getElementById('assistanceForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const assistanceType = document.getElementById('assistanceType').value;
+            const description = document.getElementById('description').value;
+            
+            if (!name || !email || !description) {
+                document.getElementById('responseMessage').innerText = 'Please fill in all fields.';
+                return;
+            }
+            
+            document.getElementById('responseMessage').innerText = `Assistance request submitted successfully!`; 
+        });
+    </script>
+</body>
+</html>

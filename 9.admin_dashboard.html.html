@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #4CAF50, #2E8B57);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 80%;
+            max-width: 800px;
+        }
+        h2 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background: #4CAF50;
+            color: white;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #2E8B57;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Admin Dashboard</h2>
+        <table>
+            <tr>
+                <th>Booking ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Ticket Type</th>
+                <th>Travel Date</th>
+            </tr>
+            <tbody id="bookingTable"></tbody>
+        </table>
+        <button onclick="loadBookings()">Refresh Data</button>
+    </div>
+    <script>
+        function loadBookings() {
+            const bookingTable = document.getElementById('bookingTable');
+            bookingTable.innerHTML = '<tr><td colspan="5">Loading...</td></tr>';
+            
+            setTimeout(() => {
+                const bookings = [
+                    { id: 1, name: "John Doe", email: "john@example.com", type: "One-Way", date: "2024-07-10" },
+                    { id: 2, name: "Jane Smith", email: "jane@example.com", type: "Round Trip", date: "2024-07-15" }
+                ];
+                
+                bookingTable.innerHTML = bookings.map(booking => `
+                    <tr>
+                        <td>${booking.id}</td>
+                        <td>${booking.name}</td>
+                        <td>${booking.email}</td>
+                        <td>${booking.type}</td>
+                        <td>${booking.date}</td>
+                    </tr>
+                `).join('');
+            }, 2000);
+        }
+        window.onload = loadBookings;
+    </script>
+</body>
+</html>
